@@ -6,13 +6,12 @@ import { ThemeProvider } from "./Context/ThemeContext"
 import { useContext } from "react"
 
 const App = () => {
-  const { user, isAuthenticated } = useContext(UserContext)
+  const { isAuthenticated } = useContext(UserContext)
   console.log(isAuthenticated)
-
   return (
     <UserProvider>
       <ThemeProvider>
-        {user.email && user.password ? <Home /> : <LoginPage />}
+        {isAuthenticated ? <Home /> : <LoginPage />}
       </ThemeProvider>
     </UserProvider>
   )

@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 
 const LoginPage = () => {
   document.title = "Login"
-  const { login, toggleAuthent, isAuthenticated } = useContext(UserContext)
+  const { login, toggleAuthent } = useContext(UserContext)
   // const { dispatchAuth }: IAuthDispatchContext = useAuthDispatch();
   const initialValues = {
     // username: "",
@@ -29,14 +29,15 @@ const LoginPage = () => {
       <h1>Signup</h1>
       <Formik
         initialValues={initialValues}
+        // validationSchema={validationSchema}
         onSubmit={(values: IUser, { setSubmitting }: FormikHelpers<IUser>) => {
-          setTimeout(() => {
-            login(values)
-            toggleAuthent()
-            console.log(values, isAuthenticated)
-            // alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 500)
+          // setTimeout(() => {
+          login(values)
+          toggleAuthent()
+          setSubmitting(false)
+          // console.log(values, isAuthenticated)
+          alert(JSON.stringify(values, null, 2))
+          // }, 500)
         }}
       >
         <Form>
