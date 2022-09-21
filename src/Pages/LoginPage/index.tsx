@@ -2,24 +2,20 @@ import { useContext } from "react"
 import { Formik, FormikHelpers, Form, Field } from "formik"
 import * as Yup from "yup"
 import { Button, TextField } from "@mui/material"
-import { UserContext, IUser } from "../../Context/UserContext"
-// import { useAuthDispatch } from "../global/Contexts/Authentification/customHook/useAuthDispatch";
-// import { IAuthDispatchContext } from "../global/Contexts/Authentification/interfaces";
+import UserContext, { IUser } from "../../Context/UserContext"
 
 const RequiredMsg = "Ce champ est requis"
 
 const validationSchema = Yup.object({
   username: Yup.string(),
-  mail: Yup.string().email("Un email valide est requis").required(RequiredMsg),
+  email: Yup.string().email("Un email valide est requis").required(RequiredMsg),
   password: Yup.string().required(RequiredMsg),
 })
 
 const LoginPage = () => {
   document.title = "Login"
   const { login, toggleAuthent } = useContext(UserContext)
-  // const { dispatchAuth }: IAuthDispatchContext = useAuthDispatch();
   const initialValues = {
-    // username: "",
     email: "",
     password: "",
   }
@@ -29,15 +25,11 @@ const LoginPage = () => {
       <h1>Signup</h1>
       <Formik
         initialValues={initialValues}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         onSubmit={(values: IUser, { setSubmitting }: FormikHelpers<IUser>) => {
-          // setTimeout(() => {
           login(values)
           toggleAuthent()
           setSubmitting(false)
-          // console.log(values, isAuthenticated)
-          alert(JSON.stringify(values, null, 2))
-          // }, 500)
         }}
       >
         <Form>

@@ -36,7 +36,7 @@ const defaultUser = {
 
 const UserContext = createContext<User>(defaultUser)
 
-const UserProvider: FC<PropsWithChildren> = ({ children }) => {
+export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState(defaultUserDetails)
   const [isAuthenticated, ToggleAuthenticated] = useState(false)
 
@@ -52,9 +52,9 @@ const UserProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const logout = () => {
     setUser(defaultUserDetails)
+    ToggleAuthenticated(false)
   }
 
-  console.log(user, isAuthenticated)
   return (
     <UserContext.Provider
       value={{ user, isAuthenticated, login, logout, toggleAuthent }}
@@ -64,4 +64,4 @@ const UserProvider: FC<PropsWithChildren> = ({ children }) => {
   )
 }
 
-export { UserProvider, UserContext }
+export default UserContext

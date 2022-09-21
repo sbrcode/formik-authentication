@@ -1,11 +1,11 @@
 import "../../App.css"
 import ToggleDarkMode from "../../Components/ToggleDarkMode"
-import { UserContext } from "../../Context/UserContext"
+import UserContext from "../../Context/UserContext"
 import { useContext } from "react"
 
 const Home = () => {
-  const { isAuthenticated } = useContext(UserContext)
-  console.log(isAuthenticated)
+  const { isAuthenticated, logout } = useContext(UserContext)
+
   return (
     <div className="App">
       <header className="App-header">
@@ -16,8 +16,11 @@ const Home = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Formik
+          {isAuthenticated ? "Learn Formik" : "fezkljflkezjlf"}
         </a>
+        <button type="submit" onClick={logout}>
+          Logout
+        </button>
       </header>
     </div>
   )
