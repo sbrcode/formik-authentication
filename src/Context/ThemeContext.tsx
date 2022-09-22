@@ -1,10 +1,4 @@
-import {
-  createContext,
-  FC,
-  PropsWithChildren,
-  useContext,
-  useState,
-} from "react"
+import { createContext, FC, PropsWithChildren, useState } from "react"
 
 interface IThemeContext {
   dark: boolean
@@ -15,9 +9,7 @@ const defaultState = {
   dark: false,
 }
 
-const ThemeContext = createContext<IThemeContext>(defaultState)
-
-export const useThemeContext = () => useContext(ThemeContext)
+export const ThemeContext = createContext<IThemeContext>(defaultState)
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [dark, setDark] = useState(defaultState.dark)
@@ -37,5 +29,3 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     </ThemeContext.Provider>
   )
 }
-
-export default ThemeContext

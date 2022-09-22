@@ -1,20 +1,15 @@
-import { MouseEvent, useContext } from "react"
-import { useThemeContext } from "../Context/ThemeContext"
+import { useContext } from "react"
 import { Button } from "@mui/material"
-import UserContext from "../Context/UserContext"
+import { UserContext } from "../Context/UserContext"
+import { ThemeContext } from "../Context/ThemeContext"
 
 const NavBar = () => {
-  const { dark, toggleDark } = useThemeContext()
+  const { dark, toggleDark } = useContext(ThemeContext)
   const { logout } = useContext(UserContext)
-
-  const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    if (toggleDark) toggleDark()
-  }
 
   return (
     <>
-      <Button variant="outlined" onClick={handleOnClick}>
+      <Button variant="outlined" onClick={toggleDark}>
         {dark ? "Toggle light mode" : "Toggle dark mode"}
       </Button>
       <Button variant="contained" type="submit" onClick={logout}>

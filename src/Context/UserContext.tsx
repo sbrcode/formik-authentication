@@ -7,13 +7,11 @@ import {
 } from "react"
 
 export interface IUser {
-  username?: string
   email: string
   password: string
 }
 
-const defaultUserDetails = {
-  username: "",
+export const defaultUserDetails = {
   email: "",
   password: "",
 }
@@ -34,15 +32,13 @@ const defaultUser = {
   logout: () => {},
 }
 
-const UserContext = createContext<User>(defaultUser)
+export const UserContext = createContext<User>(defaultUser)
 
 export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState(defaultUserDetails)
   const [isAuthenticated, ToggleAuthenticated] = useState(false)
 
-  const login = (
-    val: SetStateAction<{ username: string; email: string; password: string }>
-  ) => {
+  const login = (val: SetStateAction<{ email: string; password: string }>) => {
     setUser(val)
   }
 
@@ -63,5 +59,3 @@ export const UserProvider: FC<PropsWithChildren> = ({ children }) => {
     </UserContext.Provider>
   )
 }
-
-export default UserContext

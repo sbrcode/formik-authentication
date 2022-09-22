@@ -1,10 +1,9 @@
-import "./App.css"
+import { useContext } from "react"
 import Home from "./Pages/Home"
 import LoginPage from "./Pages/LoginPage"
-import UserContext from "./Context/UserContext"
-import { useContext } from "react"
 import NavBar from "./Components/NavBar"
-import ThemeContext from "./Context/ThemeContext"
+import { UserContext } from "./Context/UserContext"
+import { ThemeContext } from "./Context/ThemeContext"
 import "./App.css"
 
 const App = () => {
