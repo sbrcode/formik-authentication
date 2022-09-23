@@ -50,7 +50,7 @@ const LoginPage = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
         />
-        <Button variant="contained" type="submit">
+        <Button variant="contained" type="submit" color="success">
           Connexion
         </Button>
       </form>
