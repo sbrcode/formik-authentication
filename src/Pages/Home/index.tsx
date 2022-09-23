@@ -2,7 +2,7 @@
 
 const Home = () => {
   document.title = "Home"
-  return <>ACCUEIL</>
+  return <div>ACCUEIL</div>
 }
 
 export default Home
